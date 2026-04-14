@@ -91,6 +91,7 @@ def render_flow_tab(tab_key, trigger_desc, color, default_okta_action, default_a
             "Group assignment rules",
             key=f"group_rules_{tab_key}",
             placeholder="e.g. Assign to department group + location group + role group",
+            max_chars=500,
         )
 
         app_actions = {}
