@@ -24,7 +24,7 @@ OKTA_ACTIONS = [
 ]
 APP_ACTIONS = ["provision", "update", "deprovision", "notify"]
 
-LIFE360_DEFAULTS = {
+EXAMPLE_DEFAULTS = {
     "hris": "ADP Workforce Now",
     "identity": "Okta (HR-mastered provisioning)",
     "apps": ["Google Workspace", "Slack Enterprise Grid", "GitHub Enterprise", "Jira/Confluence", "Box", "Zoom"],
@@ -33,22 +33,22 @@ LIFE360_DEFAULTS = {
 if "prefilled" not in st.session_state:
     st.session_state.prefilled = False
 
-if st.sidebar.button("Load Life360 Example"):
+if st.sidebar.button("Load Example"):
     st.session_state.prefilled = True
 
 pf = st.session_state.prefilled
 
 hris = st.sidebar.selectbox(
     "HRIS source", HRIS_OPTIONS,
-    index=HRIS_OPTIONS.index(LIFE360_DEFAULTS["hris"]) if pf else 0,
+    index=HRIS_OPTIONS.index(EXAMPLE_DEFAULTS["hris"]) if pf else 0,
 )
 identity = st.sidebar.selectbox(
     "Identity platform", IDENTITY_OPTIONS,
-    index=IDENTITY_OPTIONS.index(LIFE360_DEFAULTS["identity"]) if pf else 0,
+    index=IDENTITY_OPTIONS.index(EXAMPLE_DEFAULTS["identity"]) if pf else 0,
 )
 downstream_apps = st.sidebar.multiselect(
     "Downstream apps", APP_OPTIONS,
-    default=LIFE360_DEFAULTS["apps"] if pf else [],
+    default=EXAMPLE_DEFAULTS["apps"] if pf else [],
 )
 
 st.title("HRIS Lifecycle Designer")
